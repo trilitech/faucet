@@ -28,23 +28,26 @@ module.exports = {
   },
   etherscan: {
     apiKey: {
-        mainnet: process.env.ETHERSCAN_API_KEY,
-        goerli: process.env.ETHERSCAN_API_KEY,
-        sepolia: process.env.ETHERSCAN_API_KEY,
-        bsc: process.env.BSCSCAN_API_KEY,
-        bscTestnet: process.env.BSCSCAN_API_KEY,
-        arbitrumOne: process.env.ARBISCAN_API_KEY,
-        etherlinkTestnet: process.env.ETHERSCOUT_API_KEY,
+      mainnet: process.env.ETHERSCAN_API_KEY,
+      goerli: process.env.ETHERSCAN_API_KEY,
+      sepolia: process.env.ETHERSCAN_API_KEY,
+      bsc: process.env.BSCSCAN_API_KEY,
+      bscTestnet: process.env.BSCSCAN_API_KEY,
+      arbitrumOne: process.env.ARBISCAN_API_KEY,
+      etherlinkTestnet: process.env.ETHERSCOUT_API_KEY,
     },
     customChains: [
       {
-        network: "etherlinkTestnet",
+        network: 'etherlinkTestnet',
         chainId: 128123,
         urls: {
-          apiURL: "https://explorer.etherlink.com/api",
-          browserURL: "https://explorer.etherlink.com"
-        }
-      }
-    ]
+          apiURL: 'https://explorer.etherlink.com/api',
+          browserURL: 'https://explorer.etherlink.com',
+        },
+      },
+    ],
+  },
+  sourcify: {
+    enabled: true,
   },
 };
