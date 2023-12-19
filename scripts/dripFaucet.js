@@ -2,15 +2,37 @@ const hre = require('hardhat');
 
 async function main() {
   // Get the faucet contract instance deployed on etherlinkTestnet
-  const address = '0xA91e9023289eF25E09131d9dC42d03Af7d8aB16C';
+  const faucetAddress = '0xA0399D5Eb2397e86745BA1BBf0444624659DCEF8';
   const Faucet = await ethers.getContractFactory('Faucet');
-  const faucet = await Faucet.attach(address);
+  const faucet = await Faucet.attach(faucetAddress);
+
+
+  const tokenAddress = '0x1A71f491fb0Ef77F13F8f6d2a927dd4C969ECe4f';
 
   // Call the requestTokens() function of the deployed Faucet contract
-  await faucet.requestTokens();
-  const dripAmount = await faucet.dripAmount();
-  const adjustedDripAmount = dripAmount / 10 ** 18;
-  console.log('Faucet was dripped for: ', adjustedDripAmount.toString());
+  await faucet.requestTokens(tokenAddress);
+
+  // const tokenAddress = await faucet.token();
+  const Token = await ethers.getContractFactory('Token');
+  const token = await Token.attach(tokenAddress);
+  const tokenSymbol = await token.symbol();
+
+  // Faucet balance
+  const faucetBal = await token.balanceOf(faucetAddress);
+  const adjFaucetBal = BigInt(faucetBal) / BigInt(10) ** BigInt(18);
+
+  console.log('Faucet balance:', adjFaucetBal.toString(), tokenSymbol);
+
+  // Dev account balance
+  const devAccountBal = await token.balanceOf('0x7a2d40F9c3B4c5ff1f6a7549E24aaA3F94c1b3BE');
+  const adjDevAccountBal = BigInt(devAccountBal) / BigInt(10) ** BigInt(18);
+
+  console.log('Dev account balance:', adjDevAccountBal.toString(), tokenSymbol);
+
+  // // Drip Faucet
+  // const dripAmount = await faucet.dripAmount();
+  // const adjDripAmount = BigInt(dripAmount) / BigInt(10) ** BigInt(18);
+  // console.log('Faucet was dripped for:', adjDripAmount.toString(), tokenSymbol);
 }
 
 main().catch((error) => {

@@ -2,7 +2,7 @@ const hre = require('hardhat');
 
 async function main() {
   Faucet = await hre.ethers.getContractFactory('Faucet');
-  faucet = await Faucet.deploy('0xD21B917D2f4a4a8E3D12892160BFFd8f4cd72d4F');
+  faucet = await Faucet.deploy();
 
   await faucet.waitForDeployment();
 
