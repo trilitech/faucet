@@ -2,12 +2,11 @@ const hre = require('hardhat');
 
 async function main() {
   // Get the faucet contract instance deployed on etherlinkTestnet
-  const faucetAddress = '0xA0399D5Eb2397e86745BA1BBf0444624659DCEF8';
+  const faucetAddress = '0x35287bE77EAa21874dF2f5738fBd0E8C1E61df45';
+  const tokenAddress = '0x1A71f491fb0Ef77F13F8f6d2a927dd4C969ECe4f'; // eUSD token address on etherlinkTestnet
+
   const Faucet = await ethers.getContractFactory('Faucet');
   const faucet = await Faucet.attach(faucetAddress);
-
-
-  const tokenAddress = '0x1A71f491fb0Ef77F13F8f6d2a927dd4C969ECe4f';
 
   // Call the requestTokens() function of the deployed Faucet contract
   await faucet.requestTokens(tokenAddress);

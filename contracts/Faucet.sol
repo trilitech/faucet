@@ -6,15 +6,11 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "hardhat/console.sol";
 
 contract Faucet {
-    // event Deposit(address indexed _token, address indexed _from, uint _amount);
     event Drip(address indexed _token, address indexed _from, uint _dripAmount);
     event Withdrawal(address indexed _token, address indexed _from, uint _amount);
 
 
     address payable owner;
-
-
-    // address[5] memory public tokenAddresses;
 
     mapping(address => uint) public dripAmounts;
 
@@ -60,7 +56,6 @@ contract Faucet {
     }
 
     receive() external payable {
-        // emit Deposit(address(token), msg.sender, msg.value);
     }
 
     function setDripAmount(address tokenAddress, uint _dripAmount) public onlyOwner {

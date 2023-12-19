@@ -12,7 +12,7 @@ npx hardhat run --network etherlinkTestnet scripts/deploy.js
 npx hardhat verify --network etherlinkTestnet DEPLOYED_ERC20_CONTRACT_ADDRESS 10000000000
 ```
 
-3) Deploy the Faucet for that ERC20 token:
+3) Deploy the Faucet for the ERC20 tokens specified in the Faucet's constructor:
 ```shell
 npx hardhat run --network etherlinkTestnet scripts/deployFaucet.js
 ```
