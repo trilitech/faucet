@@ -21,6 +21,7 @@ npx hardhat run --network etherlinkTestnet scripts/deployFaucet.js
 npx hardhat verify --network etherlinkTestnet DEPLOYED_FAUCET_CONTRACT_ADDRESS
 ```
 
+ERC20BalanceAggregator coded using [this medium article](https://medium.com/coinmonks/enhancing-erc20-token-balance-retrieval-b620c3c0e390)
 
 
 ### Try running some of the following tasks:
